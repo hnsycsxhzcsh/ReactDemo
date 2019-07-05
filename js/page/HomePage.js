@@ -8,12 +8,12 @@ import TrendingPage from './TrendingPage';
 import FavoriatePage from './FavoriatePage';
 import MyPage from './MyPage';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import NavigationUtil from '../navigator/NavigationUtil'
 
 export default class HomePage extends Component<Props> {
     _tabNavigator() {
         return createBottomTabNavigator({
-            PopularPage: {
+            PopularPage1: {
                 screen: PopularPage,
                 navigationOptions: {
                     tabBarLabel: "最热",
@@ -57,6 +57,8 @@ export default class HomePage extends Component<Props> {
     }
 
     render() {
+        //TODO 为什么这里可以记住DetailPage
+        NavigationUtil.navigation = this.props.navigation;
         const tabNavigator = this._tabNavigator();
         const Tab = createAppContainer(tabNavigator);
         return <Tab/>
